@@ -3,8 +3,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 26
 
-
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
@@ -31,4 +29,32 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+apply plugin: 'com.novoda.bintray-release'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('bintray.properties').newDataInputStream())
+
+publish{
+    //远程仓库名字
+    repoName = properties.getProperty("bintray.repoName")
+    //bintray用户名
+    userOrg = properties.getProperty("bintray.user")
+    //项目包名
+    groupId = 'com.xubo.linescrollviewlib'
+    //项目名称
+    artifactId = 'LineScrollView'
+    //版本号
+    publishVersion = '1.0.0'
+    //描述
+    desc = '多行文字信息滚动View'
+    //项目主页
+    website = 'https://github.com/pirrip90/LineScrollView'
+}
+//防止编码问题
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
 }
