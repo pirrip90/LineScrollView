@@ -1,9 +1,19 @@
 # Android多行文字滚动(比如中奖信息滚动)
 
-## 1、GIF图（滚动、清空和新增、更改滚动信息）
+## 1、GIF图
+**滚动**
+
 ![滚动](https://github.com/pirrip90/LineScrollView/blob/master/screen/screen1.gif)
 
+------
+
+**清空和新增**
+
 ![清空和新增](https://github.com/pirrip90/LineScrollView/blob/master/screen/screen2.gif)
+
+------
+
+**更改滚动信息**
 
 ![更改滚动信息](https://github.com/pirrip90/LineScrollView/blob/master/screen/screen3.gif)
 
