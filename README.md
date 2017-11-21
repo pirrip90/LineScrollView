@@ -58,8 +58,14 @@
 ## 6、gradle
 Add the dependency:
 ```gradle
-compile 'com.xubo.linescrollviewlib:LineScrollView:1.0.0'
+dependencies {
+    ...
+    
+    implementation 'com.xubo.linescrollviewlib:LineScrollView:1.0.0'
+}
 ```
+Android Studio 3.0以上可以使用implementation代替compile,低于3.0依然使用compile  
+
 
 ## 7、代码编译失败？
 1.Android Studio更新到3.0
