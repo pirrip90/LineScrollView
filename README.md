@@ -56,3 +56,19 @@
 >layout_height只需设置成wrap_content即可。不管LineScrollView高度设置多大，LineScrollView都会自动计算自己所需大小，设置其他其实毫无意义
 
 ## 6、gradle
+Add the dependency:
+```gradle
+dependencies {
+    ...
+    
+    implementation 'com.xubo.linescrollviewlib:LineScrollView:1.0.0'
+}
+```
+**Android Studio 3.0以上可以使用implementation代替compile,低于3.0依然使用compile**
+
+
+## 7、代码编译失败？
+1.Android Studio更新到3.0
+
+2.root目录里，删除gradle.properties里的内容或配置成自己本机的代理信息
+
