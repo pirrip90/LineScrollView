@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LineScrollView">
+
+        <!-- 文字颜色(默认颜色为黑色) -->
+        <attr name="textColor" format="color" />
+        <!-- 文字大小(默认文字大小为16sp) -->
+        <attr name="textSize" format="float" />
+        <!-- 文字(默认10dp) -->
+        <attr name="textSpace" format="dimension" />
+
+        <!-- 文字滚动显示行数(默认5行) -->
+        <attr name="scrollLines" format="integer" />
+        <!-- 滚动一屏所需时间,单位毫秒(默认5000毫秒) -->
+        <attr name="scrollScreenTime" format="integer" />
+
+    </declare-styleable>
+
+</resources>
