@@ -5,9 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
+import android.text.BoringLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Timer;
@@ -32,8 +37,7 @@ public class LineScrollView extends ListView {
     private int textColor;
     private float textSize;
     private LineAdapter lineAdapter;
-    private Context context;
-    private float textHeight;
+    private int textHeight;
     private int scrollDistance;
     private Timer timer;
     private ScrollTimerTask scrollTimerTask;
@@ -59,14 +63,14 @@ public class LineScrollView extends ListView {
         if (typedArray != null) {
             textColor = typedArray.getColor(R.styleable.LineScrollView_textColor, TEXT_COLOR);
             textSize = typedArray.getFloat(R.styleable.LineScrollView_textSize, TEXT_SIZE);
-            textSpace = (int) typedArray.getDimension(R.styleable.LineScrollView_textSpace, dp2px(context, TEXT_SPACE));
+            textSpace = (int) (typedArray.getDimension(R.styleable.LineScrollView_textSpace, dp2px(context, TEXT_SPACE)) / 2);
             scrollLines = typedArray.getInteger(R.styleable.LineScrollView_scrollLines, SCROLL_LINES);
             scrollScreenTime = typedArray.getInteger(R.styleable.LineScrollView_scrollScreenTime, SCROLL_TIME_FOR_SCREEN);
             typedArray.recycle();
         } else {
             textColor = TEXT_COLOR;
             textSize = TEXT_SIZE;
-            textSpace = (int) dp2px(context, TEXT_SPACE);
+            textSpace = (int) (dp2px(context, TEXT_SPACE) / 2);
             scrollLines = SCROLL_LINES;
             scrollScreenTime = SCROLL_TIME_FOR_SCREEN;
         }
@@ -74,21 +78,20 @@ public class LineScrollView extends ListView {
     }
 
     private void init(Context context) {
-        this.context = context;
-
-        Paint paint = new Paint();
-        paint.setTextSize(sp2px(context, textSize));
-        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
-        textHeight = fontMetrics.bottom - fontMetrics.top;
-
         setDividerHeight(0);
         setSelector(R.drawable.line_item_selector);
+
+        lineAdapter = new LineAdapter(context, textSize, textSpace, textColor, scrollLines);
+
+        TextPaint textPaint = new TextPaint();
+        textPaint.setTextSize(dp2px(context, textSize));
+        BoringLayout.Metrics boring = BoringLayout.isBoring("", textPaint);
+        textHeight = boring.bottom - boring.top;
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        lineAdapter = new LineAdapter(context, textSize, textSpace, textColor, scrollLines);
         setAdapter(lineAdapter);
     }
 
@@ -191,8 +194,8 @@ public class LineScrollView extends ListView {
         }
     }
 
-    private int getViewHeight(float textSpace, int textLine) {
-        return (int) (textHeight * textLine + textSpace * 2 * textLine) + getPaddingBottom() + getPaddingTop();
+    private int getViewHeight(int textSpace, int textLine) {
+        return textHeight * textLine + textSpace * 2 * textLine + getPaddingBottom() + getPaddingTop() + (textLine != 0 ? textSpace * 2 : 0);
     }
 
     private float dp2px(Context context, float dpValue) {

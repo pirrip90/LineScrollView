@@ -51,7 +51,7 @@ public class LineAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void clear(){
+    public void clear() {
         this.lineList.clear();
         notifyDataSetChanged();
     }
@@ -94,7 +94,15 @@ public class LineAdapter extends BaseAdapter {
         }
         lineTag.textView.setTextSize(textSize);
         lineTag.textView.setTextColor(textColor);
-        lineTag.textView.setPadding(0, textSpace, 0, textSpace);
+        if (position == 0 && position == getCount() - 1) {
+            lineTag.textView.setPadding(0, textSpace * 2, 0, textSpace * 2);
+        } else if (position == 0) {
+            lineTag.textView.setPadding(0, textSpace * 2, 0, textSpace);
+        } else if (position == getCount() - 1) {
+            lineTag.textView.setPadding(0, textSpace, 0, textSpace * 2);
+        } else {
+            lineTag.textView.setPadding(0, textSpace, 0, textSpace);
+        }
         int size = lineList.size();
         String text = lineList.get(position % size);
         lineTag.textView.setText(text);
