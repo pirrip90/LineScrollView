@@ -46,7 +46,7 @@ publish{
     //项目名称
     artifactId = 'LineScrollView'
     //版本号
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     //描述
     desc = '多行文字信息滚动View'
     //项目主页
