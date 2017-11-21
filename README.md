@@ -72,3 +72,5 @@ dependencies {
 
 2.root目录里，删除gradle.properties里的内容或配置成自己本机的代理信息
 
+3.linescrollviewlib目录里的build.gradle,删除'apply plugin: 'com.novoda.bintray-release''下面所有groovy代码,包括这一行
+
