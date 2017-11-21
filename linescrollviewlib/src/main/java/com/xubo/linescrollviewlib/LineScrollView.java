@@ -84,7 +84,7 @@ public class LineScrollView extends ListView {
         lineAdapter = new LineAdapter(context, textSize, textSpace, textColor, scrollLines);
 
         TextPaint textPaint = new TextPaint();
-        textPaint.setTextSize(dp2px(context, textSize));
+        textPaint.setTextSize(sp2px(context, textSize));
         BoringLayout.Metrics boring = BoringLayout.isBoring("", textPaint);
         textHeight = boring.bottom - boring.top;
     }
