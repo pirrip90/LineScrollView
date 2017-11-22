@@ -68,13 +68,10 @@ dependencies {
 
 
 ## 7、代码编译失败？
-1.删除linescrollviewlib的build.gradle里`apply plugin: 'com.novoda.bintray-release'`下面所有groovy代码(包括这一行)
->工程是没有bintray.properties文件,无法读取bintray.properties信息
-
-2.root目录里，删除gradle.properties里的`systemProp.http.proxyHost=127.0.0.1`和`systemProp.http.proxyPort=1080`
+1.root目录里，删除gradle.properties里的`systemProp.http.proxyHost=127.0.0.1`和`systemProp.http.proxyPort=1080`
 >gradle.properties里的代理信息不是你本机代理配置,请删除或改成你本机代理地址和端口
 
-3.Android Studio更新到3.0
+2.Android Studio更新到3.0
 
 
 
