@@ -56,7 +56,7 @@
 >layout_height只需设置成wrap_content即可。不管LineScrollView高度设置多大，LineScrollView都会自动计算自己所需大小，设置其他其实毫无意义
 
 ## 6、gradle
-Add the dependency:
+add the dependency:
 ```gradle
 dependencies {
     ...
@@ -66,9 +66,8 @@ dependencies {
 ```
 **Android Studio 3.0以上可以使用implementation代替compile,低于3.0依然使用compile**
 
-
 ## 7、代码编译失败？
-1.root目录里，删除gradle.properties里的`systemProp.http.proxyHost=127.0.0.1`和`systemProp.http.proxyPort=1080`
+1.删除项目根目录gradle.properties里的`systemProp.http.proxyHost=127.0.0.1`和`systemProp.http.proxyPort=1080`
 >gradle.properties里的代理信息不是你本机代理配置,请删除或改成你本机代理地址和端口
 
 2.Android Studio更新到3.0
